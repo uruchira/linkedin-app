@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import ShortUniqueId from "short-unique-id";
 
-import { employeeData } from "../data";
+import { employeeData } from "../data/employee.data";
 
 const uid = new ShortUniqueId({ length: 10 });
 
