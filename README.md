@@ -1,7 +1,8 @@
 # Linkedin App
+
 A simple NodeJS application built on top of ExpressJS server.
 
-### Technoligies
+### Technologies
 
 - TypeScript
 - NodeJS
