@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
 import ShortUniqueId from "short-unique-id";
 
-import { employeeData } from "../data/employee.data";
+import { getAll } from "../services/employee.service";
 
 const uid = new ShortUniqueId({ length: 10 });
 
 export const getAllEmployees = (_: Request, res: Response) => {
-  res.json(employeeData);
+  const allEmployees = getAll();
+  res.json(allEmployees);
 };
 
 export const createNewEmployee = (req: Request, res: Response) => {
@@ -21,5 +22,7 @@ export const createNewEmployee = (req: Request, res: Response) => {
       .status(400)
       .json({ message: "First and last names are required." });
   }
-  res.status(201).json([...employeeData, newEmployee]);
+
+  const allEmployees = getAll();
+  res.status(201).json([...allEmployees, newEmployee]);
 };
