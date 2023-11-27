@@ -1,14 +1,17 @@
 import { Request, Response } from "express";
-import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+import { getAllProducts, createNewProduct } from "../services/product.service";
 
-export const getAllProducts = async (_: Request, res: Response) => {
-  const allProducts = await prisma.product.findMany();
-  res.json(allProducts);
+export const getAll = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const productList = await getAllProducts();
+    res.status(200).json({ data: productList, message: "success" });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-export const createproduct = async (req: Request, res: Response) => {
-  const newProduct = await prisma.product.create({ data: req.body });
+export const addNew = async (req: Request, res: Response) => {
+  const newProduct = await createNewProduct(req);
   res.json(newProduct);
 };
