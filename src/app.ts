@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 
-import employeeRoutes from "./routes/employee.route";
+import productRoutes from "./routes/product.route";
 
 const app = express();
 dotenv.config();
@@ -11,6 +11,6 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use("/employee", employeeRoutes);
+app.use("/product", productRoutes);
 
 export default app;
