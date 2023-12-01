@@ -11,7 +11,7 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export const addNew = async (req: Request, res: Response) => {
+export const addNew = async (req: Request, res: Response): Promise<void> => {
   const newProduct = await createNewProduct(req);
   res.json(newProduct);
 };
